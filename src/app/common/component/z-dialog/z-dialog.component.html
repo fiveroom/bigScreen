@@ -1,0 +1,26 @@
+<div [ngClass]="{'shade': true, 'shade--show': dialogBoxShow}" [style.display]="shadeShow"
+    [style.backgroundColor]="shadeShowBgc" (click)="doClsByShadow()">
+    <div [style]="dialogBoxShow?dialogShowStyle:dialogCloseStyle" [ngClass]="{'dialog-box': true}"
+        (click)="$event.stopPropagation()">
+        <!-- , 'dialog-box--show': dialogBoxShow -->
+        <div class="header">
+            <div class="header-left">
+                <span> {{titleH}}</span>
+            </div>
+            <div class="header-right">
+                <i class="iconfont icon-guanbi" (click)="closeDialog()"></i>
+            </div>
+        </div>
+        <div class="body">
+            <ng-container>
+
+            </ng-container>
+        </div>
+        <div class="footer">
+            <div class="footer-but">
+                <button>确认</button>
+                <button>取消</button>
+            </div>
+        </div>
+    </div>
+</div>

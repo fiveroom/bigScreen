@@ -1,7 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-const routes: Routes = [];
+import { PageNotComponent } from './views/page-not/page-not.component';
+
+const routes: Routes = [
+    { path: '', redirectTo: '/bigScreen', pathMatch: 'full' },
+    { path: '**', component: PageNotComponent }
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

@@ -1,10 +1,15 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-const routes: Routes = [];
+
+import { BigScreenComponent } from './big-screen/big-screen.component';
+
+const routes: Routes = [
+    { path: 'bigScreen', component: BigScreenComponent }
+];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+    imports: [RouterModule.forChild(routes)],
+    exports: [RouterModule]
 })
 export class ScreenRoutingModule { }
