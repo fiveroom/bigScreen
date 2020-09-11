@@ -1,4 +1,10 @@
-<app-z-dialog titleH="标题" [(dialogShow)]="dialogShow"></app-z-dialog>
+<app-z-dialog titleH="标题" [(dialogShow)]="dialogShow" [bodyRef]="editInfo" [dialogLocat]="{shadowColor: 'transparent'}">
+</app-z-dialog>
 
+<ng-template #editInfo>
+    <div>{{name}}</div>
+</ng-template>
 
-<button (click)="dialogShow = !dialogShow">切换</button>
+<button (click)="dialogShow = !dialogShow" nz-button nzType="primary">切换</button>
+
+<app-mini-box></app-mini-box>

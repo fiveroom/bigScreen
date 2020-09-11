@@ -1,4 +1,5 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, TemplateRef, AfterViewInit, OnDestroy } from '@angular/core';
+import { fromEvent, Subscription } from 'rxjs';
 
 enum BlockStu { show = 'block', close = "none" }
 
@@ -22,12 +23,17 @@ interface IDigShow {
     templateUrl: './z-dialog.component.html',
     styleUrls: ['./z-dialog.component.less']
 })
-export class ZDialogComponent implements OnInit {
+export class ZDialogComponent implements OnInit, AfterViewInit, OnDestroy {
 
     @Input() titleH: string;
     @Input() width: string = '30%';
     @Input() closeByShade: Boolean = true;
+    @Input() closeByEsc: Boolean = true;
     @Input() dialogLocat: IDigStyle = {};
+    @Input() bodyRef: TemplateRef<any>;
+    @Input() showHead: Boolean = true;
+
+    @Input() bfClose: (done: Function) => void;
 
     @Output() dialogShowChange = new EventEmitter<Boolean>();
 
@@ -36,7 +42,8 @@ export class ZDialogComponent implements OnInit {
     shadeShowBgc: string = 'rgba(0, 0, 0, .1)';
     dialogShowStyle: IDigShow;
     dialogCloseStyle: IDigShow;
-    timer;
+    keyEvent: Subscription;  // esc关闭
+    timer;  // 动画定时器
 
     constructor() { }
 
@@ -111,6 +118,22 @@ export class ZDialogComponent implements OnInit {
 
     ngOnInit(): void {
         this.dealDiaBox(this.dialogLocat);
+    }
+
+    ngAfterViewInit() {
+        if (this.closeByEsc) {
+            this.keyEvent = fromEvent(document.body, 'keyup').subscribe((evt: KeyboardEvent) => {
+                if (evt.key == 'Escape') {
+                    this.closeDialog();
+                }
+            })
+        }
+    }
+
+    ngOnDestroy() {
+        if (this.closeByEsc) {
+            this.keyEvent.unsubscribe();
+        }
     }
 
 }

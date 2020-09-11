@@ -3,7 +3,7 @@
     <div [style]="dialogBoxShow?dialogShowStyle:dialogCloseStyle" [ngClass]="{'dialog-box': true}"
         (click)="$event.stopPropagation()">
         <!-- , 'dialog-box--show': dialogBoxShow -->
-        <div class="header">
+        <div class="header" *ngIf="showHead">
             <div class="header-left">
                 <span> {{titleH}}</span>
             </div>
@@ -12,14 +12,16 @@
             </div>
         </div>
         <div class="body">
-            <ng-container>
+            <ng-container [ngTemplateOutlet]="bodyRef">
 
             </ng-container>
+            <!-- <ng-content select="[name='body']">
+            </ng-content> -->
         </div>
         <div class="footer">
             <div class="footer-but">
-                <button>确认</button>
-                <button>取消</button>
+                <button nz-button nzType="primary" nzSize="small">确认</button>
+                <button nz-button nzSize="small">取消</button>
             </div>
         </div>
     </div>

@@ -2,6 +2,9 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 
+import { NzButtonModule } from 'ng-zorro-antd/button';
+
+
 import { ScreenRoutingModule } from './screen-routing.module';
 import { ZCommonModule } from '../../common/z-common.module';
 
@@ -15,7 +18,8 @@ import { MiniBoxComponent } from './mini-box/mini-box.component';
     imports: [
         CommonModule,
         ScreenRoutingModule,
-        ZCommonModule
+        ZCommonModule,
+        NzButtonModule
     ]
 })
 export class ScreenModule { }

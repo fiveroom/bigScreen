@@ -1,6 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+
+import { NzButtonModule } from 'ng-zorro-antd/button';
+
+
 import { ZDialogComponent } from './component/z-dialog/z-dialog.component';
 
 @NgModule({
@@ -12,7 +16,8 @@ import { ZDialogComponent } from './component/z-dialog/z-dialog.component';
         ZDialogComponent
     ],
     imports: [
-        CommonModule
+        CommonModule,
+        NzButtonModule
     ],
 })
 export class ZCommonModule { }
