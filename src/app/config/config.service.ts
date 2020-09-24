@@ -5,17 +5,16 @@ import { catchError, retry } from 'rxjs/operators';
 
 const CONFIGURL = "assets/config.json"
 
+
+export interface Config {
+    baseUrl: string;
+}
+
 @Injectable({
     providedIn: 'root'
 })
 export class ConfigService {
 
-    baseUrl: string;
-
     constructor(private http: HttpClient) { }
-
-    getConfig(){
-        return this.http.get(CONFIGURL);
-    }
 
 }

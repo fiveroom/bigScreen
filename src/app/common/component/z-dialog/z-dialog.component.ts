@@ -43,7 +43,7 @@ export class ZDialogComponent implements OnInit, AfterViewInit, OnDestroy {
     dialogShowStyle: IDigShow;
     dialogCloseStyle: IDigShow;
     keyEvent: Subscription;  // esc关闭
-    timer;  // 动画定时器
+    timer: number;  // 动画定时器
 
     constructor() { }
 

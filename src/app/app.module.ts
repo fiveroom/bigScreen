@@ -11,6 +11,9 @@ import { ZCommonModule } from './common/z-common.module';
 import { AppComponent } from './app.component';
 import { PageNotComponent } from './views/page-not/page-not.component';
 
+import { httpInterceptorProviders } from './http-interceptors/index';
+
+
 @NgModule({
     declarations: [
         AppComponent,
@@ -24,7 +27,9 @@ import { PageNotComponent } from './views/page-not/page-not.component';
         AppRoutingModule,
         HttpClientModule
     ],
-    providers: [],
+    providers: [
+        httpInterceptorProviders
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule { }
