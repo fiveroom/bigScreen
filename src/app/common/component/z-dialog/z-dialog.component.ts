@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter, TemplateRef, AfterViewInit, OnDestroy } from '@angular/core';
-import { fromEvent, Subscription } from 'rxjs';
+import { fromEvent, Subscription, } from 'rxjs';
+import { debounceTime } from 'rxjs/operators';
 
 enum BlockStu { show = 'block', close = "none" }
 
@@ -122,7 +123,7 @@ export class ZDialogComponent implements OnInit, AfterViewInit, OnDestroy {
 
     ngAfterViewInit() {
         if (this.closeByEsc) {
-            this.keyEvent = fromEvent(document.body, 'keyup').subscribe((evt: KeyboardEvent) => {
+            this.keyEvent = fromEvent(document.body, 'keyup').pipe(debounceTime(10)).subscribe((evt: KeyboardEvent) => {
                 if (evt.key == 'Escape') {
                     this.closeDialog();
                 }

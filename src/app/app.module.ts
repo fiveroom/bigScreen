@@ -1,8 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-
+// import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
 // import AntDesign from './antDesign';
+// import { NzMessageModule } from 'ng-zorro-antd/message';
+import { NzButtonModule } from 'ng-zorro-antd/button';
 
 import { ScreenModule } from './views/screen/screen.module';
 import { AppRoutingModule } from './app-routing.module';
@@ -25,7 +27,11 @@ import { httpInterceptorProviders } from './http-interceptors/index';
         BrowserModule,
         ScreenModule,
         AppRoutingModule,
-        HttpClientModule
+        HttpClientModule,
+        NzButtonModule
+        // BrowserAnimationsModule,
+        // NoopAnimationsModule,
+        // NzMessageModule
     ],
     providers: [
         httpInterceptorProviders

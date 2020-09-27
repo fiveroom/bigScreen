@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 // import { filter, map } from 'rxjs/operators';
 // import { of, pipe } from 'rxjs';
 
-
 import { ScreenService } from '../screen.service';
 
 
@@ -29,8 +28,10 @@ export class BigScreenComponent implements OnInit {
             pageIndex: 0,
             pageSize: 10,
             orderBy: ''
-        }).subscribe(res => {
+        }).then(res => {
             console.log(res)
+        }).catch(err => {
+            console.log(err)
         })
     }
 

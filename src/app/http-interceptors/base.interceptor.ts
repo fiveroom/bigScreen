@@ -18,9 +18,7 @@ export class BaseInterceptor implements HttpInterceptor {
         let req = request.clone({
             url: this.baseUrl + request.url,
             withCredentials : true,
-
         });
-        console.log(req)
         return next.handle(req);
     }
 }

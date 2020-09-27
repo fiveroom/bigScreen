@@ -1,9 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
-import { HttpHeaders } from '@angular/common/http';
 
-import { Observable } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import {ExHttpService} from '../../common/service/ex-http.service';
+import {IResponese} from '../../interCfg/httpcfg';
 
 import { IreqCanvasList } from '../../interCfg/canvas';
 
@@ -12,10 +10,10 @@ import { IreqCanvasList } from '../../interCfg/canvas';
 })
 export class ScreenService {
 
-    constructor(private http: HttpClient) { }
+    constructor(private http: ExHttpService) { }
 
-    getScreenList(reqPara: IreqCanvasList): Observable<any> {
-        return this.http.post('/service/ReportSvrSvr.svrx/GetReportCanvasList', reqPara)
+    getScreenList(reqPara: IreqCanvasList): Promise<IResponese> {
+        return this.http.postEx('/service/ReportSvrSvr.svrx/GetReportCanvasList', reqPara)
     }
 
 }

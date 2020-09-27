@@ -1,9 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
+import { OverlayModule } from '@angular/cdk/overlay';
+import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 import { NzButtonModule } from 'ng-zorro-antd/button';
-
+import { NzMessageService } from 'ng-zorro-antd/message';
+// import { NzMessageModule } from 'ng-zorro-antd/message';
 
 import { ScreenRoutingModule } from './screen-routing.module';
 import { ZCommonModule } from '../../common/z-common.module';
@@ -17,9 +19,16 @@ import { MiniBoxComponent } from './mini-box/mini-box.component';
     declarations: [ScreeListComponent, BigScreenComponent, MiniBoxComponent],
     imports: [
         CommonModule,
+        OverlayModule,
         ScreenRoutingModule,
         ZCommonModule,
-        NzButtonModule
+        BrowserAnimationsModule,
+        NoopAnimationsModule,
+        NzButtonModule,
+        // NzMessageModule
+    ],
+    providers: [
+        NzMessageService
     ]
 })
 export class ScreenModule { }
